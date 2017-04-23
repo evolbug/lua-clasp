@@ -16,7 +16,7 @@ Vector = class {
 }
 
 a = Vector(10, 10)
-print('Vector:', a.x, a.y, a.isVector)
+print('Vector:', a.x, a.y, a.isVector) -- "Vector: 10 10 true"
 ```
 
 ### Inheritance
@@ -29,7 +29,7 @@ Vector3 = Vector:extend {
 }
 
 b = Vector3(1, 2, 3)
-print('Vector3:', b.x, b.y, b.z, b.isVector)
+print('Vector3:', b.x, b.y, b.z, b.isVector) -- "Vector3: 1 2 3 true"
 ```
 
 ### Metamethods
@@ -47,5 +47,5 @@ Point = class {
 }
 
 c = Point(15, 25)
-print(c)
+print(c) -- "Point(15, 25)"
 ```

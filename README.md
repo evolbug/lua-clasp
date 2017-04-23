@@ -39,8 +39,8 @@ Point = class {
     self.x = x
     self.y = y
   end;
-  __meta = { -- metamethod table
-    __tostring = function(self)
+  __ = { -- metamethod table
+    tostring = function(self)
       return 'Point('..tostring(self.x)..', '..tostring(self.y)..')'
     end;
   };

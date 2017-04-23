@@ -23,7 +23,7 @@ print('Vector:', a.x, a.y, a.isVector)
 ```lua
 Vector3 = Vector:extend {
   init = function(self, x, y, z) -- function overriding
-    Vector.init(self, x, y) -- superclass init
+    Vector.init(self, x, y) -- superclass method call
     self.z = z
   end;
 }
@@ -39,7 +39,7 @@ Point = class {
     self.x = x
     self.y = y
   end;
-  __meta = {
+  __meta = { -- metamethod table
     __tostring = function(self)
       return 'Point('..tostring(self.x)..', '..tostring(self.y)..')'
     end;

@@ -8,4 +8,5 @@ function new(self, ...)
    return object.init and object:init(...) and object or object
 end
 function extend(base, members) return setmetatable(members, {__index=base,__call=new}) end
-class = function(members) return extend({new=new, extend=extend}, members or {}) end
+return function(members) return extend({new=new, extend=extend}, members or {}) end
+

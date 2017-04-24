@@ -7,5 +7,5 @@ local function new(self, ...)
    local object = setmetatable({}, meta)
    return object, object.init and object:init(...)
 end
-function extend(base, members) return setmetatable(members or {}, {__index=base,__call=new}) end
+local function extend(base, members) return setmetatable(members or {}, {__index=base,__call=new}) end
 return function(members) return extend({new=new, extend=extend}, members) end

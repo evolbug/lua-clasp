@@ -1,11 +1,9 @@
 -- evolbug 2017, MIT License
 -- clasp - class library
 
-local function new(self, ...)
-   local meta = {__index=self}
-   for k,v in pairs(self.__ or {}) do meta['__'..k]=v end
-   local object = setmetatable({}, meta)
-   return object, object.init and object:init(...)
-end
-local function extend(base, members) return setmetatable(members or {}, {__index=base,__call=new}) end
-return function(members) return extend({new=new, extend=extend}, members) end
+local class = { init = function()end; extend = function(self, proto)
+    local meta = {__index = proto}
+    local proto = setmetatable(proto or {},{__index=self, __call=function(_, ...) local o=setmetatable({},meta) return o,o:init(...) end})
+    for k,v in pairs(proto.__ or {}) do meta['__'..k]=v end
+    return proto end }
+return setmetatable(class, { __call = class.extend })
